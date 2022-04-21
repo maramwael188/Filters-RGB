@@ -44,6 +44,24 @@ void mergeImage(){
     }
 }
 
+void flipImage(){
+    unsigned char newImage[SIZE][SIZE][RGB];
+    // nested for loops to loop on the matrix
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for(int k = 0; k < RGB; k++) {
+                newImage[i][j][k] = image[SIZE - i][j][k];
+            }
+        }
+    }
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for (int k = 0; k < RGB; k++) {
+                image[i][j][k] = newImage[i][j][k];
+            }
+        }
+    }
+}
 
 int main() {
     // loop to make the program run until the user wants to exit
