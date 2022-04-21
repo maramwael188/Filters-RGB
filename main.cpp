@@ -63,6 +63,17 @@ void flipImage(){
     }
 }
 
+void invertImage(){
+    // nested for loops to loop on the matrix
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for (int k = 0; k < RGB; k++){
+                image[i][j][k] = 255 - image[i][j][k];
+            }
+        }
+    }
+}
+
 int main() {
     // loop to make the program run until the user wants to exit
     while (true) {
