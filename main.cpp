@@ -24,7 +24,25 @@ void saveImage() {
     writeRGBBMP(imageFileName, image);
 }
 
-
+void mergeImage(){
+    unsigned char mergedImage[SIZE][SIZE][RGB];
+    unsigned char image2[SIZE][SIZE][RGB];
+    char mergedImageFileName[100];
+    // load another image to merge with the first image
+    cout << "Enter the image file name you want to merge with: ";
+    cin >> mergedImageFileName;
+    strcat(mergedImageFileName, ".bmp");
+    readRGBBMP(mergedImageFileName, image2);
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for (int k = 0; k < RGB; k++) {
+                // get the average of pixels of the two images
+                mergedImage[i][j][k] = (image[i][j][k] + image2[i][j][k]) / 2;
+                image[i][j][k] = mergedImage[i][j][k];
+            }
+        }
+    }
+}
 
 
 int main() {
@@ -59,7 +77,7 @@ int main() {
 
                 break;
             case '3':
-
+                mergeImage();
                 break;
             case '4':
 
